@@ -1,0 +1,1904 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0b">
+<meta name="color-scheme" content="dark light">
+<title>KL|NoRules — Брифинг администрации</title>
+<meta name="description" content="Брифинг администрации KL|NoRules: ранги, наказания, правила, мини-ивенты и донат-привилегии.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" sizes="any" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23f97316'/><text x='50' y='72' font-size='64' font-family='Inter,sans-serif' font-weight='800' fill='white' text-anchor='middle'>N</text></svg>">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#0a0a0b;
+  --bg-1:#0f0f11;
+  --bg-2:#141416;
+  --bg-3:#1a1a1d;
+  --border:#1f1f23;
+  --border-2:#2a2a30;
+  --border-3:#3a3a42;
+  --text:#f5f5f7;
+  --text-2:#b4b4bc;
+  --text-3:#7a7a84;
+  --text-4:#55555e;
+  --accent:#f97316;
+  --accent-2:#fb923c;
+  --accent-soft:rgba(249,115,22,0.08);
+  --accent-border:rgba(249,115,22,0.3);
+  --danger:#ef4444;
+  --danger-soft:rgba(239,68,68,0.1);
+  --success:#22c55e;
+  --success-soft:rgba(34,197,94,0.1);
+
+  --radius-xs:4px;
+  --radius-sm:6px;
+  --radius:8px;
+  --radius-lg:12px;
+
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+
+  --header-h:64px;
+  --max-w:1200px;
+  --transition:0.16s cubic-bezier(0.4,0,0.2,1);
+
+  --arrow-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14'/><path d='m12 5 7 7-7 7'/></svg>");
+}
+
+html[data-theme="light"]{
+  --bg:#fafaf9;
+  --bg-1:#ffffff;
+  --bg-2:#f5f5f4;
+  --bg-3:#eeeeec;
+  --border:#e7e5e4;
+  --border-2:#d6d3d1;
+  --border-3:#a8a29e;
+  --text:#0c0a09;
+  --text-2:#44403c;
+  --text-3:#78716c;
+  --text-4:#a8a29e;
+  --accent-soft:rgba(249,115,22,0.10);
+  --accent-border:rgba(249,115,22,0.4);
+  --danger-soft:rgba(239,68,68,0.12);
+  --success-soft:rgba(34,197,94,0.14);
+}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:calc(var(--header-h) + 24px);
+  -webkit-text-size-adjust:100%;
+}
+
+body{
+  font-family:var(--font);
+  font-size:15px;
+  line-height:1.65;
+  color:var(--text);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-feature-settings:'cv11','ss01','ss03';
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+  min-height:100vh;
+  transition:background 0.25s,color 0.25s;
+}
+
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(600px circle at var(--mx,50%) var(--my,20%),
+      rgba(249,115,22,0.09), transparent 40%),
+    linear-gradient(var(--border) 1px, transparent 1px) 0 0/48px 48px,
+    linear-gradient(90deg, var(--border) 1px, transparent 1px) 0 0/48px 48px;
+  -webkit-mask-image:radial-gradient(circle at 50% 0%, #000 20%, transparent 75%);
+          mask-image:radial-gradient(circle at 50% 0%, #000 20%, transparent 75%);
+  pointer-events:none;z-index:0;opacity:0.55;
+}
+html[data-theme="light"] body::before{opacity:0.35}
+.layout,.header,.footer{position:relative;z-index:1}
+
+a{color:inherit;text-decoration:none;transition:color var(--transition),opacity var(--transition)}
+img,svg{display:block;max-width:100%}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit;font-family:inherit}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:var(--radius-xs)}
+
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border-2);border:3px solid var(--bg);border-radius:6px}
+::-webkit-scrollbar-thumb:hover{background:var(--border-3)}
+
+.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.card-text{color:var(--text-2);font-size:13.5px;line-height:1.55}
+.mt-0{margin-top:0}
+.mt-16{margin-top:16px}
+.mt-24{margin-top:24px}
+.mb-32{margin-bottom:32px}
+
+/* Progress */
+.progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:100;background:transparent;pointer-events:none}
+.progress-bar{height:100%;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--accent);will-change:transform;transition:transform 0.1s linear}
+
+/* Header */
+.header{
+  position:sticky;top:0;z-index:90;height:var(--header-h);
+  display:flex;align-items:center;
+  background:color-mix(in srgb, var(--bg) 75%, transparent);
+  backdrop-filter:saturate(180%) blur(16px);
+  -webkit-backdrop-filter:saturate(180%) blur(16px);
+  border-bottom:1px solid var(--border);
+  transition:border-color var(--transition),background 0.25s;
+}
+.header-inner{width:100%;max-width:var(--max-w);margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:14px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14.5px;letter-spacing:-0.01em;color:var(--text);flex-shrink:0}
+.logo-mark{
+  width:30px;height:30px;display:grid;place-items:center;
+  background:var(--accent);border-radius:var(--radius-sm);
+  font-weight:800;font-size:13px;color:#fff;letter-spacing:-0.03em;flex-shrink:0;
+  box-shadow:0 0 0 1px rgba(249,115,22,0.4),0 4px 12px rgba(249,115,22,0.25);
+}
+.logo-sep{color:var(--text-4);font-weight:400}
+.logo-sub{color:var(--text-2);font-weight:400;font-size:13.5px}
+
+.header-nav{display:flex;align-items:center;gap:2px;flex:1;justify-content:center;min-width:0}
+.header-nav a{padding:7px 10px;border-radius:var(--radius-sm);font-size:13px;color:var(--text-2);font-weight:500;position:relative;white-space:nowrap}
+.header-nav a:hover{color:var(--text);background:var(--bg-2)}
+.header-nav a.active{color:var(--text);background:var(--bg-2)}
+.header-nav a.active::after{
+  content:'';position:absolute;left:10px;right:10px;bottom:-3px;
+  height:2px;background:var(--accent);border-radius:2px;
+  box-shadow:0 0 8px rgba(249,115,22,0.5);
+}
+
+.header-clock{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:6px 11px;background:var(--bg-2);
+  border:1px solid var(--border);border-radius:100px;
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  color:var(--text-2);flex-shrink:0;
+  font-variant-numeric:tabular-nums;
+}
+.header-clock .dot{
+  width:6px;height:6px;border-radius:50%;background:var(--success);
+  box-shadow:0 0 0 3px rgba(34,197,94,0.15);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,0.15)}
+  50%{box-shadow:0 0 0 5px rgba(34,197,94,0.05)}
+}
+
+.header-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 12px;background:var(--text);color:var(--bg);
+  border-radius:var(--radius-sm);font-size:13px;font-weight:600;
+  transition:opacity var(--transition),transform var(--transition),background var(--transition),color var(--transition);
+  flex-shrink:0;
+}
+.header-cta:hover{opacity:0.88}
+.header-cta:active{transform:scale(0.98)}
+.header-cta svg{width:11px;height:11px}
+.header-icon-btn{
+  display:grid;place-items:center;width:34px;height:34px;
+  background:var(--bg-2);border:1px solid var(--border-2);
+  border-radius:var(--radius-sm);color:var(--text-2);
+  transition:all var(--transition);flex-shrink:0;
+}
+.header-icon-btn:hover{color:var(--text);border-color:var(--border-3)}
+.header-icon-btn svg{width:15px;height:15px}
+.header-icon-btn.on{color:var(--accent);border-color:var(--accent-border);background:var(--accent-soft)}
+
+.menu-toggle{display:none;width:36px;height:36px;place-items:center;border-radius:var(--radius-sm);color:var(--text);transition:background var(--transition)}
+.menu-toggle:hover{background:var(--bg-2)}
+.menu-toggle svg{width:20px;height:20px}
+
+/* Mobile menu */
+.mobile-menu{
+  display:none;position:fixed;inset:var(--header-h) 0 0 0;
+  background:var(--bg);z-index:80;padding:24px;overflow-y:auto;overscroll-behavior:contain;
+}
+.mobile-menu.open{display:block;animation:fadeIn 0.15s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.mobile-menu-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);margin-bottom:12px}
+.mobile-menu a{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 16px;border-radius:var(--radius);font-size:15px;color:var(--text);
+  background:var(--bg-1);border:1px solid var(--border);margin-bottom:8px;font-weight:500;
+  transition:background var(--transition),border-color var(--transition),color var(--transition);
+}
+.mobile-menu a:hover{background:var(--bg-2);border-color:var(--border-2)}
+.mobile-menu a.active{background:var(--accent-soft);border-color:var(--accent-border);color:var(--accent)}
+.mobile-menu a::after{content:'→';color:var(--text-4);font-size:14px;transition:transform var(--transition),color var(--transition)}
+.mobile-menu a:hover::after{transform:translateX(2px);color:var(--accent)}
+
+/* Pinned */
+.pinned-bar{
+  position:fixed;top:var(--header-h);left:0;right:0;z-index:85;
+  background:color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:8px 32px;display:none;gap:8px;overflow-x:auto;scrollbar-width:none;
+}
+.pinned-bar::-webkit-scrollbar{display:none}
+.pinned-bar.has{display:flex}
+.pinned-bar-label{
+  font-size:11px;color:var(--text-4);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;
+  display:flex;align-items:center;padding-right:8px;border-right:1px solid var(--border);flex-shrink:0;
+}
+.pinned-bar a{
+  padding:6px 12px;background:var(--bg-2);border:1px solid var(--border-2);border-radius:100px;
+  font-size:12.5px;font-weight:500;color:var(--text-2);white-space:nowrap;
+  transition:all var(--transition);display:inline-flex;align-items:center;gap:6px;
+}
+.pinned-bar a:hover{border-color:var(--accent-border);color:var(--accent);background:var(--accent-soft)}
+.pinned-bar a .remove{color:var(--text-4);font-size:14px;line-height:1;cursor:pointer;transition:color var(--transition)}
+.pinned-bar a .remove:hover{color:var(--danger)}
+
+/* Layout + TOC */
+.layout{max-width:var(--max-w);margin:0 auto;padding:0 32px}
+.content-wrap{display:grid;grid-template-columns:1fr 220px;gap:48px;align-items:start}
+.content{padding:48px 0 96px;min-width:0}
+
+.toc{
+  position:sticky;top:calc(var(--header-h) + 24px);
+  font-size:13px;align-self:start;
+  max-height:calc(100vh - var(--header-h) - 48px);
+  overflow-y:auto;padding-right:4px;
+}
+.toc-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);margin-bottom:14px;padding-left:14px}
+.toc a{
+  display:block;position:relative;padding:7px 12px 7px 14px;
+  border-radius:var(--radius-sm);color:var(--text-3);
+  border-left:2px solid transparent;transition:all var(--transition);font-weight:500;
+}
+.toc a:hover{color:var(--text);background:var(--bg-1)}
+.toc a.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-soft)}
+.toc a small{display:block;font-size:11px;color:var(--text-4);font-weight:400;margin-top:1px}
+.toc a.active small{color:var(--accent);opacity:0.7}
+.toc a::after{content:'';position:absolute;left:14px;bottom:0;height:1px;background:var(--accent);width:0;transition:width 0.3s;opacity:0.4}
+.toc a.read::after{width:calc(100% - 28px)}
+
+/* Hero */
+.hero{margin-bottom:64px;padding-bottom:48px;border-bottom:1px solid var(--border)}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;padding:5px 12px 5px 10px;
+  background:var(--accent-soft);border:1px solid var(--accent-border);border-radius:100px;
+  font-size:12px;font-weight:500;color:var(--accent);margin-bottom:24px;
+}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(249,115,22,0.2);animation:pulse 2s ease-in-out infinite}
+.hero h1{font-size:clamp(32px,4.5vw,46px);line-height:1.1;font-weight:800;letter-spacing:-0.035em;color:var(--text);margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--accent);white-space:nowrap}
+.hero p{font-size:16.5px;color:var(--text-2);max-width:640px;line-height:1.6}
+.hero-meta{display:flex;flex-wrap:wrap;gap:20px;margin-top:28px}
+.hero-meta-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-3)}
+.hero-meta-item svg{width:14px;height:14px;color:var(--text-4);flex-shrink:0}
+.hero-meta-item b{color:var(--text-2);font-weight:500}
+
+/* Section */
+.section{margin-bottom:64px;scroll-margin-top:calc(var(--header-h) + 20px);opacity:0;transform:translateY(16px);transition:opacity 0.5s,transform 0.5s}
+.section:last-child{margin-bottom:0}
+.section.in{opacity:1;transform:none}
+.section-head{margin-bottom:24px;position:relative}
+.section-head h2{font-size:24px;font-weight:700;letter-spacing:-0.02em;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:12px}
+.section-head h2::before{content:'';width:3px;height:22px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.section-head p{font-size:14.5px;color:var(--text-2);padding-left:15px}
+
+.pin-btn{
+  position:absolute;top:0;right:0;width:28px;height:28px;
+  display:grid;place-items:center;background:transparent;border:1px solid transparent;
+  border-radius:var(--radius-sm);color:var(--text-4);opacity:0;
+  transition:all var(--transition);z-index:2;
+}
+.section:hover .pin-btn{opacity:1}
+.pin-btn:hover{background:var(--bg-2);color:var(--text-2);border-color:var(--border-2)}
+.pin-btn.on{opacity:1;color:var(--accent);background:var(--accent-soft);border-color:var(--accent-border)}
+.pin-btn svg{width:14px;height:14px}
+
+.subhead{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-3);margin:40px 0 16px;display:flex;align-items:center;gap:12px}
+.subhead::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* Grid */
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+
+/* Card */
+.card{
+  background:var(--bg-1);border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px 20px;transition:border-color var(--transition),background var(--transition);
+  position:relative;overflow:hidden;isolation:isolate;
+}
+.card:hover{border-color:var(--border-2);background:var(--bg-2)}
+.card-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-3);margin-bottom:12px}
+.card h3{font-size:15.5px;font-weight:600;color:var(--text);margin-bottom:12px;letter-spacing:-0.01em;line-height:1.4}
+.card ul{list-style:none;padding:0;margin:0 0 16px}
+.card li{position:relative;padding:4px 0 4px 18px;font-size:13.5px;color:var(--text-2);line-height:1.5}
+.card li::before{content:'';position:absolute;left:0;top:13px;width:8px;height:1.5px;background:var(--text-4);border-radius:1px;transition:background var(--transition),width var(--transition)}
+.card:hover li::before{background:var(--accent);width:10px}
+.card-limit{padding-top:14px;border-top:1px solid var(--border);font-size:12.5px;color:var(--text-3);line-height:1.55}
+.card-limit b{color:var(--text-2);font-weight:500}
+.card-req{
+  display:flex;gap:10px;margin-top:12px;padding:10px 12px;
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);
+  font-size:12.5px;color:var(--text-2);line-height:1.5;
+}
+.card-req::before{
+  content:'';flex-shrink:0;width:14px;height:14px;margin-top:3px;background:var(--accent);
+  -webkit-mask:var(--arrow-mask) center/contain no-repeat;
+  mask:var(--arrow-mask) center/contain no-repeat;
+}
+.card::after,.punish::after,.stat::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:radial-gradient(220px circle at var(--cx,50%) var(--cy,50%),var(--accent-soft),transparent 60%);
+  opacity:0;transition:opacity 0.25s;pointer-events:none;z-index:-1;
+}
+.card:hover::after,.punish:hover::after,.stat:hover::after{opacity:1}
+
+/* Rows */
+.rows{border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-1);overflow:hidden}
+.row{
+  display:grid;grid-template-columns:48px 1fr;gap:20px;
+  padding:20px 24px;border-bottom:1px solid var(--border);
+  align-items:start;transition:background var(--transition);
+  position:relative;
+}
+.row:last-child{border-bottom:0}
+.row:hover{background:var(--bg-2)}
+.row.hidden{display:none}
+.row-num{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--text-3);padding-top:3px;font-variant-numeric:tabular-nums;transition:color var(--transition)}
+.row:hover .row-num{color:var(--accent)}
+.row-body{min-width:0}
+.row-body strong{display:block;font-size:14.5px;font-weight:500;color:var(--text);line-height:1.55;margin-bottom:8px;letter-spacing:-0.005em}
+.row-pen{
+  display:inline-block;font-size:12.5px;color:#fca5a5;padding:4px 10px;
+  background:var(--danger-soft);border:1px solid rgba(239,68,68,0.2);
+  border-radius:var(--radius-xs);line-height:1.4;font-weight:500;
+}
+html[data-theme="light"] .row-pen{color:#991b1b}
+.row-pen::before{content:'Наказание · ';color:#a13a3a;font-weight:400}
+html[data-theme="light"] .row-pen::before{color:#b91c1c}
+.row-note{display:block;margin-top:10px;padding-left:14px;border-left:2px solid var(--border-2);font-size:13px;color:var(--text-3);line-height:1.6;font-style:italic}
+.row-note.plain{border-left:0;padding-left:0;margin-top:6px;font-style:normal}
+.row-note a{color:var(--accent);font-style:normal;font-weight:500;border-bottom:1px solid transparent;transition:border-color var(--transition)}
+.row-note a:hover{border-bottom-color:var(--accent)}
+
+/* Steps */
+.steps{border:1px solid var(--border);border-radius:var(--radius);background:var(--bg-1);overflow:hidden}
+.step{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:18px 24px;border-bottom:1px solid var(--border);align-items:start;transition:background var(--transition)}
+.step:last-child{border-bottom:0}
+.step:hover{background:var(--bg-2)}
+.step-num{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent);padding-top:2px}
+.step-body{font-size:14px;color:var(--text-2);line-height:1.6}
+.step-body b{color:var(--text);font-weight:500}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.stat{
+  background:var(--bg-1);border:1px solid var(--border);border-radius:var(--radius);
+  padding:22px;transition:border-color var(--transition),background var(--transition);
+  position:relative;overflow:hidden;isolation:isolate;
+}
+.stat:hover{border-color:var(--border-2);background:var(--bg-2)}
+.stat::before{content:'';position:absolute;top:0;left:22px;width:24px;height:2px;background:var(--accent);border-radius:0 0 2px 2px}
+.stat-num{display:block;font-size:28px;font-weight:800;letter-spacing:-0.03em;color:var(--text);line-height:1.15;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.stat-label{font-size:13px;color:var(--text-2);line-height:1.5}
+
+/* Punish */
+.punish{
+  background:var(--bg-1);border:1px solid var(--border);border-radius:var(--radius);
+  padding:20px 22px;position:relative;overflow:hidden;isolation:isolate;
+  transition:border-color var(--transition),background var(--transition);
+}
+.punish:hover{border-color:var(--border-2);background:var(--bg-2)}
+.punish::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--danger)}
+.punish-level{
+  display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:0.04em;text-transform:uppercase;color:#fca5a5;padding:3px 8px;
+  background:var(--danger-soft);border-radius:var(--radius-xs);margin-bottom:12px;
+}
+html[data-theme="light"] .punish-level{color:#991b1b}
+.punish h3{font-size:15.5px;font-weight:600;color:var(--text);margin-bottom:8px;letter-spacing:-0.01em}
+.punish p{font-size:13.5px;color:var(--text-2);line-height:1.55}
+
+/* Notice */
+.notice{
+  display:flex;gap:14px;padding:16px 20px;
+  background:var(--accent-soft);border:1px solid var(--accent-border);
+  border-radius:var(--radius);font-size:13.5px;color:var(--text);line-height:1.6;
+  margin-bottom:20px;align-items:flex-start;
+}
+.notice-icon{flex-shrink:0;width:20px;height:20px;margin-top:1px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700}
+.notice b{color:var(--accent);font-weight:600}
+
+/* Points visualizer */
+.points{
+  margin-top:16px;padding:22px 24px;
+  background:var(--bg-1);border:1px solid var(--border);border-radius:var(--radius);
+}
+.points-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.points-title{font-size:15px;font-weight:600;color:var(--text);letter-spacing:-0.01em}
+.points-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 12px;background:var(--accent-soft);
+  border:1px solid var(--accent-border);border-radius:100px;
+  font-size:12.5px;font-weight:600;color:var(--accent);
+}
+.points-badge svg{width:12px;height:12px}
+
+.points-row{
+  display:grid;grid-template-columns:120px 1fr auto;
+  gap:16px;align-items:center;
+  padding:14px 0;border-bottom:1px dashed var(--border);
+}
+.points-row:last-child{border-bottom:0}
+.points-label{
+  font-size:13.5px;font-weight:500;color:var(--text-2);
+  display:flex;align-items:center;gap:8px;
+}
+.points-label .warn-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:22px;height:22px;padding:0 6px;
+  background:var(--danger-soft);border:1px solid rgba(239,68,68,0.25);
+  border-radius:6px;color:#fca5a5;
+  font-family:var(--mono);font-size:11px;font-weight:700;
+}
+html[data-theme="light"] .points-label .warn-badge{color:#991b1b}
+.points-track{
+  position:relative;height:8px;background:var(--bg-3);
+  border-radius:100px;overflow:hidden;
+}
+.points-fill{
+  position:absolute;top:0;left:0;bottom:0;
+  width:0;border-radius:100px;
+  background:linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition:width 0.9s cubic-bezier(0.4,0,0.2,1);
+  box-shadow:0 0 12px rgba(249,115,22,0.4);
+}
+.points-row.danger .points-fill{
+  background:linear-gradient(90deg, #ef4444, #f87171);
+  box-shadow:0 0 12px rgba(239,68,68,0.5);
+}
+.points-value{
+  font-family:var(--mono);font-size:13px;font-weight:700;
+  color:var(--text);white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.points-value span{color:var(--text-3);font-weight:500}
+
+.points-foot{
+  margin-top:18px;padding-top:16px;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;flex-wrap:wrap;font-size:12.5px;color:var(--text-3);
+}
+.points-foot b{color:var(--text-2);font-weight:500}
+.points-foot a{
+  color:var(--accent);font-weight:500;
+  border-bottom:1px solid transparent;transition:border-color var(--transition);
+  display:inline-flex;align-items:center;gap:6px;
+}
+.points-foot a:hover{border-bottom-color:var(--accent)}
+.points-foot a svg{width:11px;height:11px}
+
+/* Event */
+.event-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.event-head h3{margin:0;line-height:1.35}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:500;line-height:1.4;white-space:nowrap;flex-shrink:0}
+.badge-ok{color:var(--success);background:var(--success-soft);border:1px solid rgba(34,197,94,0.25)}
+.badge-ok::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--success);box-shadow:0 0 0 2px rgba(34,197,94,0.2)}
+.badge-req{color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-border)}
+.event p{font-size:13.5px;color:var(--text-2);line-height:1.65;margin-bottom:10px}
+.event p:last-child{margin-bottom:0}
+.event p b{color:var(--text);font-weight:500}
+
+code{font-family:var(--mono);font-size:12px;padding:2px 7px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-xs);color:var(--accent);font-weight:500}
+code.copyable{cursor:pointer;position:relative;transition:background var(--transition),border-color var(--transition),color var(--transition)}
+code.copyable::after{content:'⧉';margin-left:8px;color:var(--text-4);font-size:11px}
+code.copyable:hover{background:var(--accent-soft);border-color:var(--accent-border);color:var(--accent)}
+code.copyable:hover::after{color:var(--accent)}
+code.copyable.copied{background:var(--success-soft);border-color:rgba(34,197,94,0.35);color:var(--success)}
+code.copyable.copied::after{content:'✓';color:var(--success)}
+
+/* Rules search */
+.rules-search{
+  display:flex;align-items:center;gap:10px;padding:10px 14px;
+  background:var(--bg-1);border:1px solid var(--border);border-radius:var(--radius);
+  margin-bottom:16px;transition:border-color var(--transition),box-shadow var(--transition);
+}
+.rules-search:focus-within{border-color:var(--accent-border);box-shadow:0 0 0 3px var(--accent-soft)}
+.rules-search svg{width:16px;height:16px;color:var(--text-3);flex-shrink:0}
+.rules-search input{flex:1;background:none;border:0;outline:0;color:var(--text);font:inherit;font-size:14px}
+.rules-search input::placeholder{color:var(--text-4)}
+.rules-count{font-family:var(--mono);font-size:11px;color:var(--text-3);padding:3px 8px;background:var(--bg-2);border-radius:100px}
+
+/* Price */
+.price{display:flex;justify-content:space-between;align-items:baseline;padding-top:16px;margin-top:16px;border-top:1px solid var(--border);gap:12px;font-size:13px}
+.price.no-border{border-top:0;padding-top:6px;margin-top:0}
+.price b{color:var(--text);font-weight:700;font-size:15px;letter-spacing:-0.01em;font-variant-numeric:tabular-nums}
+.price span{color:var(--text-3);font-size:12.5px}
+
+/* Calc */
+.calc{margin-top:24px;padding:22px 24px;background:var(--bg-1);border:1px solid var(--border);border-radius:var(--radius)}
+.calc h3{font-size:16px;font-weight:600;color:var(--text);margin-bottom:6px;letter-spacing:-0.01em}
+.calc > p{font-size:13px;color:var(--text-3);margin-bottom:16px}
+.calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-bottom:18px}
+.calc-item{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);
+  cursor:pointer;transition:all var(--transition);font-size:13.5px;color:var(--text-2);user-select:none;
+}
+.calc-item:hover{border-color:var(--border-2);color:var(--text)}
+.calc-item input{display:none}
+.calc-item .box{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--border-3);flex-shrink:0;display:grid;place-items:center;transition:all var(--transition)}
+.calc-item input:checked + .box{background:var(--accent);border-color:var(--accent)}
+.calc-item input:checked + .box::after{content:'';width:9px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(0px,-1px)}
+.calc-item:has(input:checked){border-color:var(--accent-border);background:var(--accent-soft);color:var(--text)}
+.calc-total{display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid var(--border);gap:16px;flex-wrap:wrap}
+.calc-total-label{font-size:13px;color:var(--text-3)}
+.calc-total-value{font-size:22px;font-weight:800;color:var(--accent);letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
+.calc-total-value small{font-size:13px;color:var(--text-3);font-weight:500;margin-left:6px}
+
+/* Linkbox */
+.linkbox{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:22px 26px;background:var(--bg-1);border:1px solid var(--border);
+  border-radius:var(--radius);flex-wrap:wrap;
+  transition:border-color var(--transition),background var(--transition);
+}
+.linkbox:hover{border-color:var(--border-2);background:var(--bg-2)}
+.linkbox-text b{display:block;font-size:15px;font-weight:600;color:var(--text);margin-bottom:3px;letter-spacing:-0.01em}
+.linkbox-text span{font-size:13px;color:var(--text-2)}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 18px;
+  border-radius:var(--radius-sm);font-size:13.5px;font-weight:500;line-height:1.2;
+  transition:all var(--transition);white-space:nowrap;cursor:pointer;
+  text-decoration:none;border:1px solid transparent;user-select:none;
+}
+.btn:active{transform:scale(0.98)}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 1px 2px rgba(0,0,0,0.2),0 0 0 1px rgba(249,115,22,0.2)}
+.btn-primary:hover{background:var(--accent-2);border-color:var(--accent-2);color:#fff;box-shadow:0 4px 16px rgba(249,115,22,0.35)}
+.btn-secondary{background:var(--bg-2);color:var(--text);border-color:var(--border-2)}
+.btn-secondary:hover{background:var(--bg-3);border-color:var(--border-3);color:var(--text)}
+.btn-arrow::after{
+  content:'';width:14px;height:14px;background:currentColor;
+  -webkit-mask:var(--arrow-mask) center/contain no-repeat;
+  mask:var(--arrow-mask) center/contain no-repeat;
+  transition:transform var(--transition);
+}
+.btn-arrow:hover::after{transform:translateX(3px)}
+
+/* Footer */
+.footer{border-top:1px solid var(--border);padding:40px 0;margin-top:56px;background:var(--bg-1)}
+.footer-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.footer-brand{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--text-2)}
+.footer-brand .logo-mark{width:24px;height:24px;font-size:11px;box-shadow:none}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:var(--text-3);transition:color var(--transition)}
+.footer-links a:hover{color:var(--accent)}
+
+/* Toast */
+.toast{
+  position:fixed;left:50%;bottom:32px;transform:translate(-50%,20px);
+  padding:10px 18px;background:var(--bg-2);border:1px solid var(--border-2);
+  border-radius:100px;font-size:13px;color:var(--text);
+  box-shadow:0 8px 24px rgba(0,0,0,0.4);
+  opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s;
+  z-index:200;max-width:calc(100vw - 40px);
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* To top */
+.to-top{
+  position:fixed;right:24px;bottom:24px;width:48px;height:48px;
+  display:grid;place-items:center;background:var(--bg-2);
+  border:1px solid var(--border-2);border-radius:50%;color:var(--text);
+  box-shadow:0 8px 24px rgba(0,0,0,0.35);
+  opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity 0.25s,transform 0.25s,background 0.25s,border-color 0.25s,color 0.25s;
+  z-index:70;padding:0;
+}
+.to-top svg{position:relative;z-index:2;width:18px;height:18px}
+.to-top::before{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(var(--accent) var(--p,0%),transparent 0);
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 2px));
+          mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 2px));
+  pointer-events:none;
+}
+.to-top:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.to-top:hover::before{background:conic-gradient(#fff var(--p,0%),transparent 0)}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+
+/* Command palette */
+.cmdk{
+  position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  display:none;align-items:flex-start;justify-content:center;
+  padding-top:14vh;padding-left:20px;padding-right:20px;
+}
+.cmdk.open{display:flex;animation:fadeIn 0.15s ease}
+.cmdk-box{
+  width:100%;max-width:560px;background:var(--bg-1);
+  border:1px solid var(--border-2);border-radius:var(--radius-lg);
+  box-shadow:0 24px 64px rgba(0,0,0,0.6);overflow:hidden;
+  animation:cmdkIn 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+@keyframes cmdkIn{from{opacity:0;transform:translateY(-8px) scale(0.98)}to{opacity:1;transform:none}}
+.cmdk-input-wrap{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border)}
+.cmdk-input-wrap svg{width:18px;height:18px;color:var(--text-3);flex-shrink:0}
+.cmdk-input{flex:1;background:none;border:0;outline:0;color:var(--text);font:inherit;font-size:15px}
+.cmdk-input::placeholder{color:var(--text-4)}
+.cmdk-kbd{font-family:var(--mono);font-size:10px;padding:3px 6px;background:var(--bg-3);border:1px solid var(--border-2);border-radius:4px;color:var(--text-3)}
+.cmdk-list{max-height:340px;overflow-y:auto;padding:6px}
+.cmdk-item{
+  display:flex;align-items:center;gap:12px;padding:10px 14px;
+  border-radius:var(--radius-sm);cursor:pointer;
+  transition:background var(--transition);color:var(--text-2);font-size:14px;
+}
+.cmdk-item:hover,.cmdk-item.active{background:var(--bg-3);color:var(--text)}
+.cmdk-item.active{background:var(--accent-soft);color:var(--accent)}
+.cmdk-item-icon{width:20px;height:20px;flex-shrink:0;display:grid;place-items:center;color:var(--text-4)}
+.cmdk-item.active .cmdk-item-icon{color:var(--accent)}
+.cmdk-item small{margin-left:auto;font-size:11px;color:var(--text-4);font-family:var(--mono)}
+.cmdk-empty{padding:32px;text-align:center;font-size:13px;color:var(--text-3)}
+
+/* Compact */
+body.compact{font-size:14px}
+body.compact .section{margin-bottom:40px}
+body.compact .card{padding:14px 16px}
+body.compact .row,body.compact .step{padding:14px 18px}
+body.compact .stat{padding:16px}
+body.compact .stat-num{font-size:22px}
+body.compact .hero{margin-bottom:40px;padding-bottom:32px}
+body.compact .grid-2,body.compact .grid-3,body.compact .grid-4{gap:10px}
+body.compact .card li{padding:3px 0 3px 16px}
+body.compact .card ul{margin-bottom:12px}
+
+/* Responsive */
+@media(max-width:1100px){
+  .content-wrap{grid-template-columns:1fr;gap:0}
+  .toc{display:none}
+  .grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .header-nav a{padding:7px 8px;font-size:12.5px}
+  .header-clock{display:none}
+}
+@media(max-width:900px){
+  :root{--header-h:60px}
+  .header-inner{padding:0 20px;gap:10px}
+  .header-nav{display:none}
+  .menu-toggle{display:grid}
+  .header-cta{padding:7px 10px;font-size:12.5px}
+  .header-cta span{display:none}
+  .header-icon-btn{width:32px;height:32px}
+  .layout{padding:0 20px}
+  .content{padding:32px 0 64px}
+  .hero{margin-bottom:48px;padding-bottom:32px}
+  .hero h1{font-size:28px}
+  .hero p{font-size:15px}
+  .hero-meta{gap:14px}
+  .hero-meta-item{font-size:12.5px}
+  .grid-2,.grid-3,.grid-4,.stats{grid-template-columns:1fr}
+  .section{margin-bottom:48px}
+  .section-head h2{font-size:20px}
+  .subhead{margin:32px 0 12px}
+  .row,.step{grid-template-columns:38px 1fr;gap:14px;padding:16px 18px}
+  .card{padding:16px 18px}
+  .linkbox{padding:18px 20px;gap:16px}
+  .footer-inner{padding:0 20px}
+  .footer{padding:28px 0}
+  .to-top{right:16px;bottom:16px}
+  .pin-btn{opacity:1}
+  .pinned-bar{padding:8px 20px}
+  .points-row{grid-template-columns:1fr;gap:8px}
+  .points-value{text-align:right}
+}
+@media(max-width:520px){
+  .stat-num{font-size:24px}
+  .linkbox{flex-direction:column;align-items:stretch}
+  .linkbox .btn{width:100%;justify-content:center}
+  .hero h1{font-size:24px;letter-spacing:-0.03em}
+  .section-head p{padding-left:0}
+  .section-head h2::before{height:18px}
+  .price{flex-direction:column;align-items:flex-start;gap:4px}
+}
+@media(hover:none){
+  .card::after,.punish::after,.stat::after{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+  html{scroll-behavior:auto!important}
+  .section{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="logo" aria-label="KL|NoRules — на главную">
+      <span class="logo-mark">N</span>
+      <span>KL|NoRules</span>
+      <span class="logo-sep">/</span>
+      <span class="logo-sub">Брифинг</span>
+    </a>
+
+    <nav class="header-nav" aria-label="Основная навигация">
+      <a href="#ranks">Ранги</a>
+      <a href="#punishments">Наказания</a>
+      <a href="#activity">Активность</a>
+      <a href="#complaints">Разборки</a>
+      <a href="#rules">Правила</a>
+      <a href="#events">Ивенты</a>
+      <a href="#donate">Донат</a>
+      <a href="#staff">Состав</a>
+    </nav>
+
+    <div class="header-clock" title="Время по МСК" aria-label="Московское время">
+      <span class="dot"></span>
+      <span id="clock">--:--:--</span>
+    </div>
+
+    <button class="header-icon-btn" id="themeBtn" title="Переключить тему" aria-label="Переключить тему" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+      </svg>
+    </button>
+
+    <button class="header-icon-btn" id="compactBtn" title="Компактный режим" aria-label="Компактный режим" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/>
+      </svg>
+    </button>
+
+    <button class="header-icon-btn" id="cmdkBtn" title="Быстрый поиск (Ctrl+K)" aria-label="Быстрый поиск">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+      </svg>
+    </button>
+
+    <a href="https://discord.gg/Tvzd4MKdB" target="_blank" rel="noopener noreferrer" class="header-cta">
+      <span>Discord</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="pinned-bar" id="pinnedBar" aria-label="Избранные разделы">
+  <span class="pinned-bar-label">Закреплено</span>
+</div>
+
+<nav class="mobile-menu" id="mobileMenu" aria-label="Мобильная навигация" aria-hidden="true">
+  <div class="mobile-menu-title">Разделы</div>
+  <a href="#ranks"><span>Система рангов</span></a>
+  <a href="#punishments"><span>Наказания</span></a>
+  <a href="#activity"><span>Активность</span></a>
+  <a href="#complaints"><span>Разборки</span></a>
+  <a href="#rules"><span>Правила</span></a>
+  <a href="#events"><span>Мини-ивенты</span></a>
+  <a href="#donate"><span>Донат</span></a>
+  <a href="#staff"><span>Состав</span></a>
+</nav>
+
+<div class="layout">
+  <div class="content-wrap">
+    <main class="content">
+
+      <div class="hero">
+        <span class="hero-badge">Внутренний документ</span>
+        <h1>Брифинг администрации <em>KL|NoRules</em></h1>
+        <p>Ранги, наказания, правила, мини-ивенты и донат-привилегии. Всё что нужно знать администратору проекта.</p>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span>8 разделов · <b>19 правил</b></span>
+          </div>
+          <div class="hero-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Обновляется по мере изменений</span>
+          </div>
+          <div class="hero-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Только для <b>администрации</b></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- РАНГИ -->
+      <section class="section" id="ranks">
+        <div class="section-head">
+          <h2>Система рангов</h2>
+          <p>Основной состав — от Стажёра до Эксперт-администратора</p>
+        </div>
+
+        <div class="grid-4">
+          <div class="card">
+            <span class="card-tag">Основной состав</span>
+            <h3>Стажёр</h3>
+            <ul>
+              <li>Слежка за сервером</li>
+              <li>Разбор жалоб</li>
+              <li>Прохождение стажировки</li>
+            </ul>
+            <div class="card-limit"><b>Ограничения:</b> мини-ивенты, запрет на наказание администрации</div>
+            <div class="card-req">Пройти собеседование и стажировку</div>
+          </div>
+
+          <div class="card">
+            <span class="card-tag">Основной состав</span>
+            <h3>Младший админ</h3>
+            <ul>
+              <li>Слежка за сервером</li>
+              <li>Разбор жалоб</li>
+            </ul>
+            <div class="card-limit"><b>Ограничения:</b> мини-ивенты, запрет на наказание администрации</div>
+            <div class="card-req">14 дней без выяснений</div>
+          </div>
+
+          <div class="card">
+            <span class="card-tag">Основной состав</span>
+            <h3>Администратор</h3>
+            <ul>
+              <li>Слежка за сервером</li>
+              <li>Разбор жалоб</li>
+              <li>Помощь основному составу</li>
+            </ul>
+            <div class="card-limit"><b>Ограничения:</b> мини-ивенты (с разрешения), запрет на наказание администрации</div>
+            <div class="card-req">35 дней без выяснений и рекомендация куратора</div>
+          </div>
+
+          <div class="card">
+            <span class="card-tag">Основной состав</span>
+            <h3>Старший админ</h3>
+            <ul>
+              <li>Слежка за сервером</li>
+              <li>Разбор жалоб</li>
+              <li>Помощь основному составу</li>
+            </ul>
+            <div class="card-limit"><b>Ограничения:</b> мини-ивенты (с разрешения), наказание администрации только по просьбе куратора</div>
+            <div class="card-req">70 дней без выяснений и рекомендация руководства</div>
+          </div>
+
+          <div class="card">
+            <span class="card-tag">Основной состав</span>
+            <h3>Эксперт-админ</h3>
+            <ul>
+              <li>Слежка за сервером</li>
+              <li>Разбор жалоб</li>
+              <li>Помощь составу</li>
+              <li>Аудит действий администраторов</li>
+            </ul>
+            <div class="card-limit"><b>Ограничения:</b> мини-ивенты (с разрешения), наказание администрации с согласия куратора</div>
+            <div class="card-req">100 дней без выяснений и одобрение руководства</div>
+          </div>
+        </div>
+
+        <h3 class="subhead">Специальный состав</h3>
+
+        <div class="grid-2">
+          <div class="card">
+            <span class="card-tag">Спец. состав</span>
+            <h3>Помощник К.А.</h3>
+            <ul>
+              <li>Мониторинг работы администраторов</li>
+              <li>Сбор отчётов о нарушениях</li>
+            </ul>
+            <div class="card-limit"><b>Ограничения:</b> мини-ивенты (с разрешения), наказание администрации только по решению контроля</div>
+          </div>
+          <div class="card">
+            <span class="card-tag">Спец. состав</span>
+            <h3>К.А.</h3>
+            <ul>
+              <li>Мониторинг работы администраторов</li>
+              <li>Принятие решений по спорным ситуациям</li>
+              <li>Управление системой предупреждений</li>
+            </ul>
+            <div class="card-limit"><b>Ограничения:</b> мини-ивенты (с разрешения), может наказывать администрацию без ограничений</div>
+          </div>
+        </div>
+
+        <h3 class="subhead">Высший состав</h3>
+
+        <div class="grid-2">
+          <div class="card">
+            <span class="card-tag">Высший состав</span>
+            <h3>Куратор</h3>
+            <ul>
+              <li>Наставничество над составом</li>
+              <li>Выдача отработок</li>
+              <li>Рекомендации к повышению</li>
+              <li>Слежка за таблицей</li>
+            </ul>
+            <div class="card-limit"><b>Ограничения:</b> полный доступ к системе предупреждений</div>
+          </div>
+          <div class="card">
+            <span class="card-tag">Высший состав</span>
+            <h3>Руководство</h3>
+            <ul>
+              <li>Внесение изменений в правила</li>
+              <li>Высшая инстанция по всем вопросам</li>
+            </ul>
+            <div class="card-limit"><b>Ограничения:</b> отсутствуют</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- НАКАЗАНИЯ -->
+      <section class="section" id="punishments">
+        <div class="section-head">
+          <h2>Система наказаний</h2>
+          <p>За нарушения правил администрации</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="punish">
+            <div class="punish-level">1 предупреждение</div>
+            <h3>+10 дней к повышению</h3>
+            <p>За нарушение правил администрации срок повышения увеличивается на 10 дней</p>
+          </div>
+          <div class="punish">
+            <div class="punish-level">2 предупреждения</div>
+            <h3>+20 дней к повышению</h3>
+            <p>Срок повышения увеличивается суммарно на 20 дней</p>
+          </div>
+          <div class="punish">
+            <div class="punish-level">3 предупреждения</div>
+            <h3>Снятие с поста</h3>
+            <p>Три предупреждения — снятие с поста администратора</p>
+          </div>
+        </div>
+
+        <h3 class="subhead">Как снять предупреждение</h3>
+
+        <div class="notice">
+          <span class="notice-icon">i</span>
+          <div>Предупреждения снимаются за <b>очки активности</b>. Свои очки можно посмотреть в <b>таблице администрации</b>.</div>
+        </div>
+
+        <div class="points">
+          <div class="points-head">
+            <span class="points-title">Стоимость снятия</span>
+            <span class="points-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+              </svg>
+              1 предупреждение = 20 очков
+            </span>
+          </div>
+
+          <div class="points-row" data-points="20">
+            <div class="points-label">
+              <span class="warn-badge">1</span>
+              Снять 1 предупреждение
+            </div>
+            <div class="points-track"><div class="points-fill"></div></div>
+            <div class="points-value">20 <span>очков</span></div>
+          </div>
+
+          <div class="points-row" data-points="40">
+            <div class="points-label">
+              <span class="warn-badge">2</span>
+              Снять 2 предупреждения
+            </div>
+            <div class="points-track"><div class="points-fill"></div></div>
+            <div class="points-value">40 <span>очков</span></div>
+          </div>
+
+          <div class="points-row danger" data-points="60">
+            <div class="points-label">
+              <span class="warn-badge">3</span>
+              Снять 3 предупреждения
+            </div>
+            <div class="points-track"><div class="points-fill"></div></div>
+            <div class="points-value">60 <span>очков</span></div>
+          </div>
+
+          <div class="points-foot">
+            <span>Прогресс-бары показывают, сколько очков нужно накопить для снятия</span>
+            <a href="https://docs.google.com/spreadsheets/d/18pR2LiLUsGVB_m_P0RAx2b5DfoT_0rt8OodPg6Hurl4/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">
+              Мои очки в таблице
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7"/><path d="M7 7h10v10"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- АКТИВНОСТЬ -->
+      <section class="section" id="activity">
+        <div class="section-head">
+          <h2>Для администрации</h2>
+          <p>Нормы активности и лимиты состава</p>
+        </div>
+
+        <h3 class="subhead mt-0">Нормы активности</h3>
+        <div class="stats mb-32">
+          <div class="stat">
+            <span class="stat-num">10 ч</span>
+            <span class="stat-label">в неделю — от стажёра до администратора</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">16 ч</span>
+            <span class="stat-label">в неделю — от старшего администратора до К.А.</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">—</span>
+            <span class="stat-label">высшая администрация — нормы отсутствуют</span>
+          </div>
+        </div>
+
+        <h3 class="subhead">Лимиты состава</h3>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-num">10</span>
+            <span class="stat-label">администраторов</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">7</span>
+            <span class="stat-label">старших администраторов</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">4</span>
+            <span class="stat-label">эксперт-администраторов</span>
+          </div>
+        </div>
+        <p class="card-text mt-16">Стажёры не учитываются в лимите</p>
+      </section>
+
+      <!-- РАЗБОРКИ -->
+      <section class="section" id="complaints">
+        <div class="section-head">
+          <h2>Алгоритм разборок</h2>
+          <p>Порядок разбора жалоб</p>
+        </div>
+
+        <div class="steps">
+          <div class="step"><span class="step-num">01</span><span class="step-body">Подана жалоба — берём игрока и телепортируем в башню.</span></div>
+          <div class="step"><span class="step-num">02</span><span class="step-body">Проводим жалобу, выносим финальный вердикт. Если стороны не сошлись — запрашиваем доказательства.</span></div>
+          <div class="step"><span class="step-num">03</span><span class="step-body">Если игрок признал вину — это доказательство. <b>Запишите демку на его признание.</b></span></div>
+          <div class="step"><span class="step-num">04</span><span class="step-body">Наказываем игрока либо возвращаем роль. При 100% доказанном нарушении — забирать из игры <b>можно</b>.</span></div>
+          <div class="step"><span class="step-num">05</span><span class="step-body">При лёгком нарушении — предупреждение или минимальный бан. Не наказывайте на максимальный срок.</span></div>
+        </div>
+      </section>
+
+      <!-- ПРАВИЛА -->
+      <section class="section" id="rules">
+        <div class="section-head">
+          <h2>Правила администрации</h2>
+          <p>Обязательны к исполнению. Нарушение — наказание по системе предупреждений</p>
+        </div>
+
+        <div class="rules-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+          </svg>
+          <input id="rulesSearch" type="search" placeholder="Поиск по правилам…" autocomplete="off" aria-label="Поиск по правилам">
+          <span class="rules-count" id="rulesCount"></span>
+        </div>
+
+        <div class="rows">
+          <div class="row"><div class="row-num">01</div><div class="row-body"><strong>Запрещён админ-абуз (злоупотребление админ-правами)</strong><span class="row-pen">от 1 предупреждения до снятия</span></div></div>
+          <div class="row"><div class="row-num">02</div><div class="row-body"><strong>Запрещено мешать игровому процессу при помощи RA/админ-панели</strong><span class="row-pen">от 2 предупреждений до снятия</span></div></div>
+          <div class="row"><div class="row-num">03</div><div class="row-body"><strong>Запрещено находиться в админ-башне без веской причины</strong><span class="row-pen">1 предупреждение</span></div></div>
+          <div class="row"><div class="row-num">04</div><div class="row-body"><strong>Запрещено оскорблять игроков</strong><span class="row-pen">от 1 до 2 предупреждений</span></div></div>
+          <div class="row"><div class="row-num">05</div><div class="row-body"><strong>Обязаны помогать игрокам в спорных ситуациях и отвечать на вопросы</strong><span class="row-pen">1 предупреждение</span></div></div>
+          <div class="row"><div class="row-num">06</div><div class="row-body"><strong>Обязаны объяснить игроку, какое правило он нарушил</strong><span class="row-pen">1 предупреждение</span></div></div>
+          <div class="row"><div class="row-num">07</div><div class="row-body"><strong>Запрещено игнорировать жалобы игроков</strong><span class="row-note">Даже без доказательств вы обязаны рассмотреть жалобу. Регулярно проверяйте админ-чат.</span><span class="row-pen">1 предупреждение</span></div></div>
+          <div class="row"><div class="row-num">08</div><div class="row-body"><strong>Разбор жалобы только при присутствии обоих сторон конфликта</strong><span class="row-note">Если игрок жив, нельзя принудительно изъять его из игры для разбора.</span><span class="row-pen">1 предупреждение</span></div></div>
+          <div class="row"><div class="row-num">09</div><div class="row-body"><strong>Запрещено банить, кикать, мутить без причины и доказательств</strong><span class="row-pen">от 2 предупреждений до снятия</span></div></div>
+          <div class="row"><div class="row-num">9.1</div><div class="row-body"><strong>Можно выдать наказание, если вы или другой админ стали прямыми свидетелями нарушения</strong><span class="row-note">Доказательства: запись (демонстрация экрана), скриншот, логи. При апелляции обязаны предоставить.</span></div></div>
+          <div class="row"><div class="row-num">10</div><div class="row-body"><strong>Обязаны в причине бана указывать пункт правил, который был нарушен</strong><span class="row-note">Если ваш ник в игре на русском, укажите также кто выдал бан.</span><span class="row-pen">1 предупреждение</span></div></div>
+          <div class="row"><div class="row-num">11</div><div class="row-body"><strong>Норма активности — 5 часов в течение любых 3 дней</strong><span class="row-pen">1 предупреждение за каждую пропущенную норму</span></div></div>
+          <div class="row"><div class="row-num">12</div><div class="row-body"><strong>Запрещено нарушать основные игровые правила сервера NoRules</strong><span class="row-pen">1 предупреждение</span></div></div>
+          <div class="row"><div class="row-num">13</div><div class="row-body"><strong>Запрещена излишняя нагрузка сервера через админ-инструменты</strong><span class="row-pen">от 2 предупреждений до снятия</span></div></div>
+          <div class="row"><div class="row-num">14</div><div class="row-body"><strong>О нарушениях других админов сообщать в спец. канал Discord</strong><span class="row-note"><a href="https://discord.com/channels/952471099818516540/1313756447338790924" target="_blank" rel="noopener noreferrer">Открыть канал Discord</a></span><span class="row-pen">1 предупреждение</span></div></div>
+          <div class="row"><div class="row-num">15</div><div class="row-body"><strong>Запрещено наказывать администрацию без согласования с руководством</strong><span class="row-pen">1 предупреждение</span></div></div>
+          <div class="row"><div class="row-num">16</div><div class="row-body"><strong>Запрещено проводить мини-ивенты без доступа к ним</strong><span class="row-pen">1–2 предупреждения</span></div></div>
+          <div class="row"><div class="row-num">17</div><div class="row-body"><strong>Запрещено проводить ивенты, которых нет в официальном списке</strong><span class="row-pen">1 предупреждение</span></div></div>
+          <div class="row"><div class="row-num">18</div><div class="row-body"><strong>Ник в Discord должен совпадать с ником в SCP:SL</strong><span class="row-note">О смене ника предупреждать за день в специальном канале.</span><span class="row-pen">1 предупреждение</span></div></div>
+          <div class="row"><div class="row-num">19</div><div class="row-body"><strong>Запрещено быть администратором на другом проекте</strong><span class="row-pen">снятие вплоть до ЧС проекта</span></div></div>
+        </div>
+      </section>
+
+      <!-- ИВЕНТЫ -->
+      <section class="section" id="events">
+        <div class="section-head">
+          <h2>Мини-ивенты</h2>
+          <p>Проводить может Администратор и выше</p>
+        </div>
+
+        <div class="notice">
+          <span class="notice-icon">i</span>
+          <div><b>Секретные ивенты.</b> Некоторые мини-ивенты не публикуются в общем списке и проводятся отдельно.</div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card event">
+            <div class="event-head">
+              <h3>Подрыватели</h3>
+              <span class="badge badge-ok">Доступен</span>
+            </div>
+            <p><b>Суть:</b> каждые 2 минуты случайному игроку выдаётся Розовая конфета.</p>
+            <p><b>Команда:</b> <code class="copyable" data-copy="[candy ID pink]" tabindex="0">[candy ID pink]</code></p>
+            <p><b>Правила:</b> один игрок не может получить конфету более двух раз подряд.</p>
+          </div>
+
+          <div class="card event">
+            <div class="event-head">
+              <h3>Нет связи</h3>
+              <span class="badge badge-ok">Доступен</span>
+            </div>
+            <p><b>Суть:</b> полное отключение электроэнергии в комплексе.</p>
+            <p>Каждому игроку выдаётся Хэллоуинская лампа. При появлении МОГ и Хаоса — лампа выдаётся автоматически.</p>
+            <p>После взрыва боеголовки наружное освещение включается. При активации генераторов — внутреннее.</p>
+          </div>
+
+          <div class="card event">
+            <div class="event-head">
+              <h3>Сделка с демоном</h3>
+              <span class="badge badge-ok">Доступен</span>
+            </div>
+            <p>Каждые 3 минуты админ (Демон) телепортируется к случайному игроку и предлагает выбор.</p>
+            <p><b>Богатство</b> — 10 HP и любой SCP-предмет кроме SCP-1344. <b>Здоровье</b> — 250 HP, забирается всё оружие. <b>Жертва</b> — игрок погибает, случайный SCP теряет 250 HP. <b>Власть</b> — SCP-1344.</p>
+            <p>SCP-1344 — только 1 раз за раунд. Каждый 5-й визит — случайный эффект.</p>
+          </div>
+
+          <div class="card event">
+            <div class="event-head">
+              <h3>Монета судьбы</h3>
+              <span class="badge badge-req">2–3 админа</span>
+            </div>
+            <p>2–3 админа в разных точках: лифты Gate A и Gate B, тяжёлая зона у SCP-049 и SCP-173.</p>
+            <p>Игрок выбирает Орёл или Решка. Победа — телепорт в выбранную точку + бонус. Поражение — смерть.</p>
+            <p><b>Джекпот Судьбы (10%)</b> — второй бросок. <b>Золотая монета</b> — 1 раз за раунд, телепорт + редкий предмет.</p>
+          </div>
+
+          <div class="card event">
+            <div class="event-head">
+              <h3>Секретный администратор</h3>
+              <span class="badge badge-ok">Доступен</span>
+            </div>
+            <p>NPC-торговец с доступом к теневому рынку. Игроки обменивают здоровье, скорость, предметы и передают жизни.</p>
+            <p><b>Обмены:</b> здоровье ↔ предметы, здоровье ↔ скорость, скорость ↔ предметы и т.д.</p>
+            <p>Сделки с передачей жизней — только по обоюдному согласию. Мин. здоровье и скорость — 10% от базового. Каждое следующее повышение дороже.</p>
+            <p>Действует ограниченное время.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ДОНАТ -->
+      <section class="section" id="donate">
+        <div class="section-head">
+          <h2>Донат-привилегии</h2>
+          <p>Не нарушают VSR, выдаются только на сервере NoRules</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Junior</h3>
+            <ul>
+              <li>Плашка Junior (зелёная)</li>
+              <li>Возможность выдавать вещи</li>
+            </ul>
+            <div class="price"><b>400 ₽</b><span>навсегда · 100 ₽ / мес</span></div>
+          </div>
+
+          <div class="card">
+            <h3>Длань Змея</h3>
+            <ul>
+              <li>Плашка Длань Змея (зелёная)</li>
+              <li>Выдавать вещи</li>
+              <li>Выдавать эффекты</li>
+            </ul>
+            <div class="price"><b>600 ₽</b><span>навсегда · 150 ₽ / мес</span></div>
+          </div>
+
+          <div class="card">
+            <h3>Алый Молот</h3>
+            <ul>
+              <li>Плашка Алый Молот (красная)</li>
+              <li>Доступ к админ-чату</li>
+              <li>Выдавать эффекты</li>
+              <li>Выдавать вещи</li>
+            </ul>
+            <div class="price"><b>850 ₽</b><span>навсегда · 250 ₽ / мес</span></div>
+          </div>
+
+          <div class="card">
+            <h3>Командир Гок</h3>
+            <ul>
+              <li>Плашка Командир Гок (голубая)</li>
+              <li>Доступ к админ-чату</li>
+              <li>Выдавать эффекты и вещи</li>
+              <li>На ивентах — любая роль МОГа</li>
+              <li>Менять класс</li>
+            </ul>
+            <div class="price"><b>1000 ₽</b><span>навсегда · 300 ₽ / мес</span></div>
+          </div>
+
+          <div class="card">
+            <h3>Фактотум</h3>
+            <ul>
+              <li>Плашка Фактотум (голубая)</li>
+              <li>Доступ к админ-чату</li>
+              <li>Выдавать эффекты и вещи</li>
+              <li>На ивентах — любая роль</li>
+              <li>Режим наблюдателя</li>
+              <li>Смена класса на любой</li>
+            </ul>
+            <div class="price"><b>2000 ₽</b><span>навсегда · 325 ₽ / мес</span></div>
+          </div>
+
+          <div class="card">
+            <h3>Именной префикс</h3>
+            <p class="card-text mb-32">Префикс справа от никнейма в списке игроков и рядом с именем в игре.</p>
+            <div class="price"><b>500 ₽</b><span>обычный · 160 ₽ / мес</span></div>
+            <div class="price no-border"><b>600 ₽</b><span>переливающийся · 200 ₽ / мес</span></div>
+          </div>
+        </div>
+
+        <div class="calc">
+          <h3>Калькулятор стоимости</h3>
+          <p>Отметьте нужные привилегии — увидите итоговую сумму</p>
+          <div class="calc-grid" id="calcGrid">
+            <label class="calc-item"><input type="checkbox" data-name="Junior" data-forever="400" data-month="100"><span class="box"></span><span>Junior — 400 ₽</span></label>
+            <label class="calc-item"><input type="checkbox" data-name="Длань Змея" data-forever="600" data-month="150"><span class="box"></span><span>Длань Змея — 600 ₽</span></label>
+            <label class="calc-item"><input type="checkbox" data-name="Алый Молот" data-forever="850" data-month="250"><span class="box"></span><span>Алый Молот — 850 ₽</span></label>
+            <label class="calc-item"><input type="checkbox" data-name="Командир Гок" data-forever="1000" data-month="300"><span class="box"></span><span>Командир Гок — 1000 ₽</span></label>
+            <label class="calc-item"><input type="checkbox" data-name="Фактотум" data-forever="2000" data-month="325"><span class="box"></span><span>Фактотум — 2000 ₽</span></label>
+            <label class="calc-item"><input type="checkbox" data-name="Префикс обычный" data-forever="500" data-month="160"><span class="box"></span><span>Префикс обычный — 500 ₽</span></label>
+            <label class="calc-item"><input type="checkbox" data-name="Префикс переливающийся" data-forever="600" data-month="200"><span class="box"></span><span>Префикс переливающийся — 600 ₽</span></label>
+          </div>
+          <div class="calc-total">
+            <span class="calc-total-label">Итого</span>
+            <span class="calc-total-value" id="calcTotal">0 ₽<small>навсегда</small></span>
+          </div>
+        </div>
+
+        <h3 class="subhead">Правила использования доната</h3>
+
+        <div class="rows">
+          <div class="row"><div class="row-num">01</div><div class="row-body"><strong>Изменять роль</strong><span class="row-note plain">Только себе или другу (1 раз за раунд). Фактотум — 3 раза, Гок — 2 раза. Другу — только вместе с изменением своей роли.</span></div></div>
+          <div class="row"><div class="row-num">02</div><div class="row-body"><strong>За SCP</strong><span class="row-note plain">Только в первую минуту раунда. Нельзя за уже имеющегося SCP. Сначала перейти в спектаторы.</span></div></div>
+          <div class="row"><div class="row-num">03</div><div class="row-body"><strong>За SCP-3114</strong><span class="row-note plain">При одном скелете в раунде и с разрешения администратора.</span></div></div>
+          <div class="row"><div class="row-num">04</div><div class="row-body"><strong>Смена роли</strong><span class="row-note plain">Только в спектаторах (кроме начала раунда), через 4 минуты после старта, после смерти — минимум 1 минуту. Нельзя во время/после взрыва боеголовки.</span></div></div>
+          <div class="row"><div class="row-num">05</div><div class="row-body"><strong>Эффекты</strong><span class="row-note plain">Только себе, 1 раз за раунд. Запрещены invisibility, damage reduction, bodyshot reduction, movement speed. Нужна консультация админа.</span></div></div>
+          <div class="row"><div class="row-num">06</div><div class="row-body"><strong>Выдача вещей</strong><span class="row-note plain">Гок — до 6 за раунд. Запрещены микро-хид, карта 05, электро-палка, плазмаган, SCP-1344. Ком-45 и SCP можно, кроме 1344. Каждый SCP — до 2 раз, SCP-207 — до 3 раз. Патроны без ограничений.</span></div></div>
+          <div class="row"><div class="row-num">07</div><div class="row-body"><strong>Запрещено мешать администрации</strong><span class="row-note plain">Например, спавн за обучение и т.п.</span></div></div>
+        </div>
+
+        <div class="linkbox mt-24">
+          <div class="linkbox-text">
+            <b>Приобрести донат</b>
+            <span>Все покупки проводятся через Discord-сервер</span>
+          </div>
+          <a class="btn btn-primary btn-arrow" href="https://discord.gg/Tvzd4MKdB" target="_blank" rel="noopener noreferrer">Перейти в Discord</a>
+        </div>
+      </section>
+
+      <!-- СОСТАВ -->
+      <section class="section" id="staff">
+        <div class="section-head">
+          <h2>Состав администрации</h2>
+          <p>Актуальные данные в таблице</p>
+        </div>
+
+        <div class="linkbox">
+          <div class="linkbox-text">
+            <b>Таблица состава</b>
+            <span>Открывается в Google Таблицах</span>
+          </div>
+          <a class="btn btn-secondary btn-arrow" href="https://docs.google.com/spreadsheets/d/18pR2LiLUsGVB_m_P0RAx2b5DfoT_0rt8OodPg6Hurl4/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">Открыть таблицу</a>
+        </div>
+      </section>
+
+    </main>
+
+    <aside class="toc" aria-label="Оглавление">
+      <div class="toc-title">На этой странице</div>
+      <a href="#ranks">Ранги<small>Основной и высший состав</small></a>
+      <a href="#punishments">Наказания<small>Система предупреждений</small></a>
+      <a href="#activity">Активность<small>Нормы и лимиты</small></a>
+      <a href="#complaints">Разборки<small>Алгоритм жалоб</small></a>
+      <a href="#rules">Правила<small>19 пунктов</small></a>
+      <a href="#events">Ивенты<small>Мини-ивенты</small></a>
+      <a href="#donate">Донат<small>Привилегии</small></a>
+      <a href="#staff">Состав<small>Таблица</small></a>
+    </aside>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-mark">N</span>
+      <span>KL|NoRules — брифинг администрации</span>
+    </div>
+    <div class="footer-links">
+      <a href="#" data-scroll-top>Наверх</a>
+      <a href="https://discord.gg/Tvzd4MKdB" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a href="https://docs.google.com/spreadsheets/d/18pR2LiLUsGVB_m_P0RAx2b5DfoT_0rt8OodPg6Hurl4/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer">Таблица</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<button class="to-top" id="toTop" aria-label="Наверх">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5"/><path d="m5 12 7-7 7 7"/>
+  </svg>
+</button>
+
+<div class="cmdk" id="cmdk" role="dialog" aria-modal="true" aria-label="Быстрый поиск">
+  <div class="cmdk-box">
+    <div class="cmdk-input-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+      </svg>
+      <input class="cmdk-input" id="cmdkInput" type="text" placeholder="Раздел, правило, ивент, донат…" autocomplete="off">
+      <span class="cmdk-kbd">ESC</span>
+    </div>
+    <div class="cmdk-list" id="cmdkList"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+    });
+  }
+
+  function copyText(text, okMsg){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      return navigator.clipboard.writeText(text).then(function(){
+        if(okMsg) toast(okMsg); return true;
+      }).catch(function(){ toast('Не удалось скопировать'); return false; });
+    }
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch(e){}
+    document.body.removeChild(ta);
+    if(okMsg) toast(ok ? okMsg : 'Не удалось скопировать');
+    return Promise.resolve(ok);
+  }
+
+  var header = document.querySelector('.header');
+  var headerH = header ? header.offsetHeight : 64;
+  var progressBar = document.getElementById('progressBar');
+  var toTop = document.getElementById('toTop');
+
+  var toastEl = document.getElementById('toast');
+  var toastTimer;
+  function toast(msg){
+    if(!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 1800);
+  }
+
+  function scrollToId(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - headerH - 20;
+    window.scrollTo({top: top, behavior: 'smooth'});
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var href = a.getAttribute('href');
+      if(href === '#' || href === '') return;
+      var id = href.slice(1);
+      if(document.getElementById(id)){
+        e.preventDefault();
+        scrollToId(id);
+        if(history.replaceState) history.replaceState(null, '', href);
+        closeMobileMenu();
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-scroll-top]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  });
+
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.header-nav a, .mobile-menu a'));
+
+  function setActive(id){
+    navLinks.forEach(function(l){
+      var isActive = l.getAttribute('href') === '#' + id;
+      l.classList.toggle('active', isActive);
+      if(isActive) l.setAttribute('aria-current', 'true');
+      else l.removeAttribute('aria-current');
+    });
+  }
+
+  var ticking = false;
+  function onScroll(){
+    if(ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function(){
+      var y = window.pageYOffset;
+      var docH = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = docH > 0 ? (y / docH) : 0;
+
+      if(progressBar) progressBar.style.transform = 'scaleX(' + pct + ')';
+
+      if(toTop){
+        toTop.style.setProperty('--p', (pct * 100).toFixed(1) + '%');
+        toTop.classList.toggle('show', y > 600);
+      }
+
+      if(header) header.style.borderBottomColor = y > 10 ? 'var(--border-2)' : 'var(--border)';
+
+      var refY = y + headerH + 100;
+      var currentId = null;
+      for(var i = 0; i < sections.length; i++){
+        if(sections[i].offsetTop <= refY) currentId = sections[i].id;
+      }
+      if(currentId) setActive(currentId);
+
+      updateToc();
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive: true});
+  window.addEventListener('resize', function(){
+    headerH = header ? header.offsetHeight : 64;
+    onScroll();
+  });
+
+  if(toTop) toTop.addEventListener('click', function(){
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+
+  /* Mobile menu */
+  var menuToggle = document.getElementById('menuToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+  function openMobileMenu(){
+    if(!mobileMenu || !menuToggle) return;
+    mobileMenu.classList.add('open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu(){
+    if(!mobileMenu || !menuToggle) return;
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  if(menuToggle) menuToggle.addEventListener('click', function(){
+    if(mobileMenu && mobileMenu.classList.contains('open')) closeMobileMenu();
+    else openMobileMenu();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeMobileMenu();
+  });
+
+  /* Spotlight */
+  if(window.matchMedia && window.matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('.card, .punish, .stat').forEach(function(el){
+      el.addEventListener('pointermove', function(e){
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--cx', (e.clientX - r.left) + 'px');
+        el.style.setProperty('--cy', (e.clientY - r.top) + 'px');
+      });
+    });
+  }
+
+  document.addEventListener('pointermove', function(e){
+    document.documentElement.style.setProperty('--mx', e.clientX + 'px');
+    document.documentElement.style.setProperty('--my', e.clientY + 'px');
+  }, {passive: true});
+
+  /* Fade-in */
+  if('IntersectionObserver' in window){
+    var secIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); secIO.unobserve(en.target); }
+      });
+    }, {rootMargin: '-80px'});
+    document.querySelectorAll('.section').forEach(function(s){ secIO.observe(s); });
+  } else {
+    document.querySelectorAll('.section').forEach(function(s){ s.classList.add('in'); });
+  }
+
+  /* Copy */
+  document.querySelectorAll('.copyable').forEach(function(el){
+    function doCopy(){
+      var text = el.dataset.copy || el.textContent;
+      copyText(text, 'Скопировано: ' + text).then(function(ok){
+        if(ok){
+          el.classList.add('copied');
+          setTimeout(function(){ el.classList.remove('copied'); }, 1200);
+        }
+      });
+    }
+    el.addEventListener('click', doCopy);
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); doCopy(); }
+    });
+  });
+
+  /* Rules search */
+  var searchInput = document.getElementById('rulesSearch');
+  var rulesCount = document.getElementById('rulesCount');
+  var rulesRows = document.querySelectorAll('#rules .row');
+  var rulesTotal = rulesRows.length;
+  function updateRulesCount(n){ if(rulesCount) rulesCount.textContent = n + ' / ' + rulesTotal; }
+  updateRulesCount(rulesTotal);
+  if(searchInput){
+    searchInput.addEventListener('input', function(e){
+      var q = e.target.value.trim().toLowerCase();
+      var visible = 0;
+      rulesRows.forEach(function(r){
+        var match = !q || r.textContent.toLowerCase().indexOf(q) !== -1;
+        r.classList.toggle('hidden', !match);
+        if(match) visible++;
+      });
+      updateRulesCount(visible);
+    });
+  }
+
+  /* Theme — тёмная по умолчанию */
+  var themeBtn = document.getElementById('themeBtn');
+  var storedTheme = null;
+  try { storedTheme = localStorage.getItem('kl-theme'); } catch(e){}
+  if(storedTheme !== 'light' && storedTheme !== 'dark') storedTheme = 'dark';
+  document.documentElement.setAttribute('data-theme', storedTheme);
+  if(themeBtn) themeBtn.setAttribute('aria-pressed', storedTheme === 'light' ? 'true' : 'false');
+
+  if(themeBtn){
+    themeBtn.addEventListener('click', function(){
+      var cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      var next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      themeBtn.setAttribute('aria-pressed', next === 'light' ? 'true' : 'false');
+      try { localStorage.setItem('kl-theme', next); } catch(e){}
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if(meta) meta.setAttribute('content', next === 'light' ? '#fafaf9' : '#0a0a0b');
+      toast(next === 'light' ? 'Светлая тема' : 'Тёмная тема');
+    });
+  }
+
+  /* Clock MSK */
+  var clockEl = document.getElementById('clock');
+  function updateClock(){
+    if(!clockEl) return;
+    var now = new Date();
+    var utc = now.getTime() + now.getTimezoneOffset() * 60000;
+    var msk = new Date(utc + 3 * 3600000);
+    var hh = String(msk.getHours()).padStart(2, '0');
+    var mm = String(msk.getMinutes()).padStart(2, '0');
+    var ss = String(msk.getSeconds()).padStart(2, '0');
+    clockEl.textContent = hh + ':' + mm + ':' + ss;
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  /* Compact */
+  var compactBtn = document.getElementById('compactBtn');
+  if(compactBtn){
+    var compactOn = false;
+    try { compactOn = localStorage.getItem('kl-compact') === '1'; } catch(e){}
+    if(compactOn){
+      document.body.classList.add('compact');
+      compactBtn.setAttribute('aria-pressed', 'true');
+      compactBtn.classList.add('on');
+    }
+    compactBtn.addEventListener('click', function(){
+      var on = document.body.classList.toggle('compact');
+      compactBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      compactBtn.classList.toggle('on', on);
+      try { localStorage.setItem('kl-compact', on ? '1' : '0'); } catch(e){}
+      toast(on ? 'Компактный режим включён' : 'Компактный режим выключен');
+    });
+  }
+
+  /* Points visualizer — анимация заполнения */
+  if('IntersectionObserver' in window){
+    var pointsRows = document.querySelectorAll('.points-row');
+    var maxPoints = 60;
+    var pointsIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          var row = en.target;
+          var val = +row.dataset.points || 0;
+          var fill = row.querySelector('.points-fill');
+          if(fill){
+            setTimeout(function(){
+              fill.style.width = Math.min(100, (val / maxPoints) * 100) + '%';
+            }, 100);
+          }
+          pointsIO.unobserve(row);
+        }
+      });
+    }, {threshold: 0.4});
+    pointsRows.forEach(function(r){ pointsIO.observe(r); });
+  }
+
+  /* Pinned */
+  var pinIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/></svg>';
+  var pinnedBar = document.getElementById('pinnedBar');
+  var pinned = [];
+  try { pinned = JSON.parse(localStorage.getItem('kl-pinned') || '[]'); } catch(e){ pinned = []; }
+
+  function savePinned(){ try { localStorage.setItem('kl-pinned', JSON.stringify(pinned)); } catch(e){} }
+  function renderPinned(){
+    if(!pinnedBar) return;
+    if(pinned.length === 0){
+      pinnedBar.classList.remove('has');
+      pinnedBar.innerHTML = '<span class="pinned-bar-label">Закреплено</span>';
+      return;
+    }
+    pinnedBar.classList.add('has');
+    var html = '<span class="pinned-bar-label">Закреплено</span>';
+    pinned.forEach(function(id){
+      var sec = document.getElementById(id);
+      if(!sec) return;
+      var title = sec.querySelector('h2');
+      if(!title) return;
+      html += '<a href="#' + id + '" data-pin-id="' + id + '">' +
+              escapeHtml(title.textContent.trim()) +
+              '<span class="remove" data-remove="' + id + '" title="Убрать">×</span>' +
+              '</a>';
+    });
+    pinnedBar.innerHTML = html;
+  }
+
+  document.querySelectorAll('.section').forEach(function(sec){
+    if(!sec.id) return;
+    var head = sec.querySelector('.section-head');
+    if(!head) return;
+    head.style.position = 'relative';
+
+    var btn = document.createElement('button');
+    btn.className = 'pin-btn' + (pinned.indexOf(sec.id) !== -1 ? ' on' : '');
+    btn.setAttribute('aria-label', 'Закрепить раздел');
+    btn.setAttribute('aria-pressed', pinned.indexOf(sec.id) !== -1 ? 'true' : 'false');
+    btn.innerHTML = pinIcon;
+
+    btn.addEventListener('click', function(){
+      var idx = pinned.indexOf(sec.id);
+      if(idx === -1){
+        pinned.push(sec.id);
+        btn.classList.add('on');
+        btn.setAttribute('aria-pressed', 'true');
+        toast('Раздел закреплён');
+      } else {
+        pinned.splice(idx, 1);
+        btn.classList.remove('on');
+        btn.setAttribute('aria-pressed', 'false');
+        toast('Раздел откреплён');
+      }
+      savePinned(); renderPinned();
+    });
+    head.appendChild(btn);
+  });
+
+  if(pinnedBar){
+    pinnedBar.addEventListener('click', function(e){
+      var removeId = e.target.dataset.remove;
+      if(removeId){
+        e.preventDefault(); e.stopPropagation();
+        var idx = pinned.indexOf(removeId);
+        if(idx !== -1){
+          pinned.splice(idx, 1);
+          savePinned(); renderPinned();
+          document.querySelectorAll('.pin-btn').forEach(function(b){
+            var sec = b.closest('.section');
+            if(sec && sec.id === removeId){
+              b.classList.remove('on');
+              b.setAttribute('aria-pressed', 'false');
+            }
+          });
+          toast('Откреплено');
+        }
+        return;
+      }
+      var link = e.target.closest('a[data-pin-id]');
+      if(link){
+        e.preventDefault();
+        scrollToId(link.dataset.pinId);
+      }
+    });
+  }
+  renderPinned();
+
+  /* TOC */
+  var tocLinks = document.querySelectorAll('.toc a');
+  var tocSections = [];
+  tocLinks.forEach(function(link){
+    var id = link.getAttribute('href').slice(1);
+    var sec = document.getElementById(id);
+    if(sec) tocSections.push({link: link, sec: sec});
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      scrollToId(id);
+      if(history.replaceState) history.replaceState(null, '', '#' + id);
+    });
+  });
+  function updateToc(){
+    var refY = window.pageYOffset + headerH + 120;
+    tocSections.forEach(function(item){
+      var sec = item.sec, link = item.link;
+      var isActive = sec.offsetTop <= refY &&
+                     sec.offsetTop + sec.offsetHeight > refY;
+      link.classList.toggle('active', isActive);
+      var total = sec.offsetHeight;
+      var read = Math.min(Math.max(-sec.getBoundingClientRect().top + headerH, 0), total);
+      link.classList.toggle('read', total > 0 && read / total > 0.6);
+    });
+  }
+
+  /* Command palette */
+  var cmdk = document.getElementById('cmdk');
+  var cmdkInput = document.getElementById('cmdkInput');
+  var cmdkList = document.getElementById('cmdkList');
+  var cmdkBtn = document.getElementById('cmdkBtn');
+  var cmdkIndex = [], cmdkActiveIdx = 0, cmdkFiltered = [];
+
+  function buildCmdkIndex(){
+    cmdkIndex = [];
+    document.querySelectorAll('.section').forEach(function(sec){
+      var h2 = sec.querySelector('h2');
+      if(h2 && sec.id) cmdkIndex.push({type:'Раздел', label:h2.textContent.trim(), id:sec.id, icon:'▸'});
+    });
+    document.querySelectorAll('#rules .row').forEach(function(row){
+      var strong = row.querySelector('strong');
+      if(strong) cmdkIndex.push({type:'Правило', label:strong.textContent.trim().slice(0,90), id:'rules', icon:'§'});
+    });
+    document.querySelectorAll('#events .event h3').forEach(function(h){
+      cmdkIndex.push({type:'Ивент', label:h.textContent.trim(), id:'events', icon:'✦'});
+    });
+    document.querySelectorAll('#donate .card h3').forEach(function(h){
+      cmdkIndex.push({type:'Донат', label:h.textContent.trim(), id:'donate', icon:'₽'});
+    });
+    document.querySelectorAll('#ranks .card h3').forEach(function(h){
+      cmdkIndex.push({type:'Ранг', label:h.textContent.trim(), id:'ranks', icon:'★'});
+    });
+  }
+
+  function renderCmdk(query){
+    var q = query.trim().toLowerCase();
+    cmdkFiltered = !q ? cmdkIndex.slice(0, 12)
+      : cmdkIndex.filter(function(it){
+          return it.label.toLowerCase().indexOf(q) !== -1 ||
+                 it.type.toLowerCase().indexOf(q) !== -1;
+        }).slice(0, 40);
+    cmdkActiveIdx = 0;
+    if(cmdkFiltered.length === 0){
+      cmdkList.innerHTML = '<div class="cmdk-empty">Ничего не найдено</div>';
+      return;
+    }
+    cmdkList.innerHTML = cmdkFiltered.map(function(it, i){
+      return '<div class="cmdk-item' + (i === 0 ? ' active' : '') +
+             '" data-idx="' + i + '">' +
+             '<span class="cmdk-item-icon">' + it.icon + '</span>' +
+             '<span>' + escapeHtml(it.label) + '</span>' +
+             '<small>' + it.type + '</small>' +
+             '</div>';
+    }).join('');
+  }
+
+  function setCmdkActive(idx){
+    if(cmdkFiltered.length === 0) return;
+    cmdkActiveIdx = (idx + cmdkFiltered.length) % cmdkFiltered.length;
+    var items = cmdkList.querySelectorAll('.cmdk-item');
+    items.forEach(function(el, i){ el.classList.toggle('active', i === cmdkActiveIdx); });
+    var active = items[cmdkActiveIdx];
+    if(active) active.scrollIntoView({block:'nearest'});
+  }
+
+  function pickCmdk(){
+    var item = cmdkFiltered[cmdkActiveIdx];
+    if(!item) return;
+    closeCmdk();
+    scrollToId(item.id);
+    if(history.replaceState) history.replaceState(null, '', '#' + item.id);
+  }
+
+  function openCmdk(){
+    if(!cmdk) return;
+    cmdk.classList.add('open');
+    cmdkInput.value = '';
+    renderCmdk('');
+    setTimeout(function(){ cmdkInput.focus(); }, 10);
+  }
+  function closeCmdk(){ if(cmdk) cmdk.classList.remove('open'); }
+
+  if(cmdk && cmdkInput && cmdkList){
+    buildCmdkIndex();
+    cmdkInput.addEventListener('input', function(e){ renderCmdk(e.target.value); });
+    cmdkInput.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowDown'){ e.preventDefault(); setCmdkActive(cmdkActiveIdx + 1); }
+      else if(e.key === 'ArrowUp'){ e.preventDefault(); setCmdkActive(cmdkActiveIdx - 1); }
+      else if(e.key === 'Enter'){ e.preventDefault(); pickCmdk(); }
+      else if(e.key === 'Escape'){ closeCmdk(); }
+    });
+    cmdkList.addEventListener('click', function(e){
+      var item = e.target.closest('.cmdk-item');
+      if(!item) return;
+      cmdkActiveIdx = +item.dataset.idx;
+      pickCmdk();
+    });
+    cmdk.addEventListener('click', function(e){
+      if(e.target === cmdk) closeCmdk();
+    });
+    if(cmdkBtn) cmdkBtn.addEventListener('click', openCmdk);
+    document.addEventListener('keydown', function(e){
+      if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k'){
+        e.preventDefault();
+        if(cmdk.classList.contains('open')) closeCmdk();
+        else openCmdk();
+      }
+      if(e.key === '/' && !cmdk.classList.contains('open')){
+        var tag = document.activeElement && document.activeElement.tagName;
+        if(tag !== 'INPUT' && tag !== 'TEXTAREA'){ e.preventDefault(); openCmdk(); }
+      }
+      if(e.key === 'Escape' && cmdk.classList.contains('open')) closeCmdk();
+    });
+  }
+
+  /* Donate calc */
+  var calcGrid = document.getElementById('calcGrid');
+  var calcTotal = document.getElementById('calcTotal');
+  if(calcGrid && calcTotal){
+    var updateCalc = function(){
+      var forever = 0, month = 0, count = 0;
+      calcGrid.querySelectorAll('input[type="checkbox"]:checked').forEach(function(inp){
+        forever += +inp.dataset.forever || 0;
+        month += +inp.dataset.month || 0;
+        count++;
+      });
+      if(count === 0) calcTotal.innerHTML = '0 ₽<small>выберите привилегии</small>';
+      else calcTotal.innerHTML = forever + ' ₽<small>навсегда · от ' + month + ' ₽ / мес</small>';
+    };
+    calcGrid.addEventListener('change', updateCalc);
+    updateCalc();
+  }
+
+  /* Init */
+  onScroll();
+
+  if(window.location.hash){
+    var hashId = window.location.hash.slice(1);
+    if(document.getElementById(hashId)){
+      window.addEventListener('load', function(){
+        setTimeout(function(){ scrollToId(hashId); }, 50);
+      });
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
